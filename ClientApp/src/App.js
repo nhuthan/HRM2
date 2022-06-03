@@ -1,22 +1,36 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
+import Layout from './layout';
+import { Spin } from 'antd';
+import routes from './routes';
+import LoginPage from './pages/account/login';
 
-import './custom.css'
+const App = () => (
+    <Suspense fallback={
+        <div className='fixed w-screen h-screen'>
+            <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'>
+                <Spin size="large" />
+            </div>
+        </div>
+    }>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/login' exact element={<LoginPage />} />
+                <Route path="/" element={<Layout><Outlet /></Layout>}>
+                    {
+                        routes.map(({ path, exact, component: Element, ...restProps }) => (
+                            <Route
+                                key={path}
+                                path={path}
+                                exact={exact}
+                                element={<Element {...restProps} />}
+                            />
+                        ))
+                    }
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    </Suspense>
+)
 
-export default class App extends Component {
-  static displayName = App.name;
-
-  render () {
-    return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
-    );
-  }
-}
+export default App;
