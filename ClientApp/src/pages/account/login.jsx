@@ -1,10 +1,20 @@
 import { Button, Input, Typography, Form, Checkbox } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../actions/account';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 const AccountLogin = props => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const account = useSelector(state => state.account);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (account.loggedIn) {
+            navigate('/');
+        }
+    }, [account])
 
     const onFinish = () => {
         dispatch(login(form.getFieldsValue()));

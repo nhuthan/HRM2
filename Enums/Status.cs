@@ -7,6 +7,7 @@ namespace HRM2
     {
         [Display(Name = "Ngừng hoạt động")]
         Inactive = 0,
+
         [Display(Name = "Đang hoạt động")]
         Active = 1,
     }

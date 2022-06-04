@@ -2,24 +2,20 @@ import { actions } from '../reducer/account';
 
 export const getProfile = () => {
     return {
-        url: '/account',
+        url: '/account/info',
         method: 'get',
-        types: {
+        actions: {
             success: actions.setProfile
         }
     };
 };
 
-export const login = (username, password, remember) => {
+export const login = (params) => {
     return {
         url: '/account/login',
         method: 'post',
-        params: {
-            username,
-            password,
-            remember
-        },
-        types: {
+        params,
+        actions: {
             success: actions.setToken,
         }
     }
@@ -50,7 +46,7 @@ export const updateAvatar = (url) => {
         params: {
             url
         },
-        types: {
+        actions: {
             success: actions.setProfile
         }
     };
@@ -64,7 +60,7 @@ export const updateProfile = (data) => {
         params: {
             ...data
         },
-        types: {
+        actions: {
             success: actions.setProfile
         }
     }

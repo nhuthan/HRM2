@@ -8,7 +8,7 @@ export const slice = createSlice({
         tokenChecked: false
     },
     reducers: {
-        setAccount: (state, action) => {
+        setProfile: (state, action) => {
             state.account = {
                 ...state.account,
                 ...action.payload.data

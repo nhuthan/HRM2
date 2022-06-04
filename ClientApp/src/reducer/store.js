@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import accountReducer from './account';
-import appReducer from './app';
 import ajaxCall from '../lib/ajax';
+import account from './account';
+import app from './app';
+import department from './department';
 
 export default configureStore({
     reducer: {
-        account: accountReducer,
-        app: appReducer,
+        account,
+        app,
+        department
     },
     middleware: getDefaultMiddleware => [
         ajaxCall,

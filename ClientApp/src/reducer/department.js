@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
-    name: 'app',
+    name: 'deparment',
     initialState: {
-        enums: []
+        items: []
     },
     reducers: {
-        setEnums: (state, action) => {
-            state.enums = [
+        setItems: (state, action) => {
+            state.items = [
                 ...action.payload.data
             ]
         }

@@ -68,8 +68,8 @@ class LayoutPage extends React.Component {
                 <Navigate
                     to='/login'
                     state={{
-                        from: location.pathname,
-                        search: location.search,
+                        from: location?.pathname,
+                        search: location?.search,
                     }}
                 />
             );

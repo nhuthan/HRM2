@@ -32,7 +32,7 @@ namespace HRM2.Controllers
                     FullName = "System Admin",
                     UserName = adminUserName,
                     Email = adminEmail,
-                    CreatedDate = DateTime.Now,
+                    CreatedDate = DateTime.UtcNow,
                     Status = IdentityStatus.Active
                 }, adminPassword);
             }

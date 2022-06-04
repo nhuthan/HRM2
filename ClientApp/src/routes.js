@@ -1,11 +1,7 @@
-// import React, { lazy } from "react";
-// import {
-//     CodepenSquareFilled,
-//     QqCircleFilled
-// } from '@ant-design/icons';
+
 
 import HomePage from './pages/home';
-//const ProfilePage = lazy(() => import("@/pages/profile"))
+import DepartmentPage from './pages/department';
 
 const routes = [
     {
@@ -13,6 +9,11 @@ const routes = [
         exact: true,
         title: 'Home',
         component: HomePage
+    },
+    {
+        path: "/departments",
+        title: 'Phòng ban',
+        component: DepartmentPage
     },
 ];
 
